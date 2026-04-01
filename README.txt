@@ -1,9 +1,9 @@
-FoolSearch / PulseMix
+April Search
 =====================
 
 Overview
 --------
-FoolSearch is a dark-themed, April Fools-styled recommendation prototype that
+April Search is a dark-themed, April Fools-styled recommendation prototype that
 combines:
 
 - profile-based recommendations

@@ -1,6 +1,6 @@
-# PulseMix
+# April Search
 
-PulseMix is a hackathon-ready prototype for Topic 3: a combined recommendation system that unifies content discovery across videos, music, podcasts, movies, and news.
+April Search is a hackathon-ready prototype for Topic 3: a combined recommendation system that unifies content discovery across videos, music, podcasts, movies, and news.
 
 It now includes an AI-driven recommendation layer that can rerank content and generate personalized explanations with the OpenAI Responses API.
 
@@ -31,7 +31,7 @@ node server.js
 
 Then visit `http://localhost:3000`.
 
-If no API key is present, PulseMix still works with its built-in heuristic recommendation engine.
+If no API key is present, April Search still works with its built-in heuristic recommendation engine.
 
 ## Recommendation logic
 

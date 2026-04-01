@@ -337,7 +337,7 @@ function wireEvents() {
     state.webSearchResults = [];
     state.webSearchSummary = "";
     refs.webSearchPrompt.value = "";
-    refs.webSearchHelper.textContent = "Use a natural-language prompt and PulseMix will return current web results with links.";
+    refs.webSearchHelper.textContent = "Use a natural-language prompt and April Search will return current web results with links.";
     updateWebSearchStatus("offline", "Ready");
     renderControls();
     refreshRecommendations();
@@ -401,7 +401,7 @@ function initAprilGames() {
   refs.signalResult.textContent = "Signal idle";
   refs.signalCopy.textContent = "Decode the fake transmission and see what the prank satellites say.";
   refs.astroResult.textContent = "Awaiting sign";
-  refs.astroCopy.textContent = "Choose a zodiac sign and FoolSearch will pull a playful recommendation derived from live internet astrology context.";
+  refs.astroCopy.textContent = "Choose a zodiac sign and April Search will pull a playful recommendation derived from live internet astrology context.";
   refs.riddleResult.textContent = "Loading riddle";
   refs.riddleCopy.textContent = "Fetching a real riddle from the internet for the prank station.";
   refs.riddleQuestion.textContent = "Please wait while mission control steals a riddle from the internet.";
@@ -451,7 +451,7 @@ function triggerPrank() {
   const orbitLabels = ["Oops", "Aliens", "404", "Bonk", "Ha ha"];
 
   refs.modeTitle.textContent = "Maximum mischief";
-  refs.modeDescription.textContent = "For a brief moment, FoolSearch is pretending the recommendation engine is powered by moon dust and overconfidence.";
+  refs.modeDescription.textContent = "For a brief moment, April Search is pretending the recommendation engine is powered by moon dust and overconfidence.";
   refs.profileMatch.textContent = "???";
   refs.diversityScore.textContent = "∞";
   refs.activeSignals.textContent = "42";
@@ -487,7 +487,7 @@ async function requestWebSearch() {
   const query = state.webSearchPrompt.trim();
 
   if (!query) {
-    refs.webSearchHelper.textContent = "Write a prompt first, then PulseMix can search the internet and return linked results.";
+    refs.webSearchHelper.textContent = "Write a prompt first, then April Search can search the internet and return linked results.";
     updateWebSearchStatus("offline", "Enter prompt");
     return;
   }
@@ -527,7 +527,7 @@ async function requestWebSearch() {
 
 async function requestAiRecommendations() {
   updateStatus("loading", "Generating...");
-  refs.aiHelper.textContent = "PulseMix is asking the AI layer to rerank the current cross-domain shortlist.";
+  refs.aiHelper.textContent = "April Search is asking the AI layer to rerank the current cross-domain shortlist.";
 
   try {
     const response = await fetch("/api/recommendations", {
@@ -731,11 +731,11 @@ async function hydrateCatalog() {
     refs.aiHelper.textContent =
       result.mode === "live"
         ? `Loaded ${result.items.length} live items from web sources. Local ranking and AI reranking now use the crawled catalog.`
-        : "Live crawling was unavailable, so PulseMix is using the built-in backup catalog.";
+        : "Live crawling was unavailable, so April Search is using the built-in backup catalog.";
   } catch (error) {
     state.catalog = fallbackCatalog;
     state.catalogMode = "fallback";
-    refs.aiHelper.textContent = `Live catalog loading failed, so PulseMix stayed on the built-in backup catalog. (${error.message})`;
+    refs.aiHelper.textContent = `Live catalog loading failed, so April Search stayed on the built-in backup catalog. (${error.message})`;
   }
 }
 
@@ -908,7 +908,7 @@ function resolveStrategyTitle(ranked) {
 function resolveStrategyExplanation(ranked) {
   const lead = ranked[0];
   const leadDomain = domains.find((domain) => domain.key === lead?.domain)?.label || "content";
-  return `PulseMix is prioritizing ${leadDomain.toLowerCase()} as the strongest anchor, then folding in adjacent formats to keep the feed coherent, explainable, and fresh.`;
+  return `April Search is prioritizing ${leadDomain.toLowerCase()} as the strongest anchor, then folding in adjacent formats to keep the feed coherent, explainable, and fresh.`;
 }
 
 function updateStatus(kind, label) {

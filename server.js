@@ -239,7 +239,7 @@ const server = http.createServer(async (request, response) => {
 });
 
 server.listen(PORT, HOST, () => {
-  console.log(`PulseMix server running on http://${HOST}:${PORT}`);
+  console.log(`April Search server running on http://${HOST}:${PORT}`);
 });
 
 function resolveStaticPath(urlPath = "/") {
@@ -512,7 +512,7 @@ async function searchArchiveMovies() {
 async function fetchJson(url) {
   const response = await fetch(url, {
     headers: {
-      "User-Agent": "PulseMix/1.0"
+      "User-Agent": "AprilSearch/1.0"
     }
   });
 
@@ -526,7 +526,7 @@ async function fetchJson(url) {
 async function fetchText(url) {
   const response = await fetch(url, {
     headers: {
-      "User-Agent": "PulseMix/1.0"
+      "User-Agent": "AprilSearch/1.0"
     }
   });
 

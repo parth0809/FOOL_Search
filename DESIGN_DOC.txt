@@ -1,9 +1,9 @@
-FoolSearch Design Document
+April Search Design Document
 ==========================
 
 1. Purpose
 ----------
-FoolSearch is a recommendation prototype designed to show how one interface can:
+April Search is a recommendation prototype designed to show how one interface can:
 
 - combine cross-domain discovery
 - use profile inputs and prompt inputs together
