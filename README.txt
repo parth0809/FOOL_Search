@@ -49,10 +49,13 @@ How To Run
 1. Install dependencies:
    npm install
 
-2. Start the server:
+2. Create your local environment file:
+   cp .env.example .env
+
+3. Start the server:
    node server.js
 
-3. Open:
+4. Open:
    http://127.0.0.1:3000
 
 
