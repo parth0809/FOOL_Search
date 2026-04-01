@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070b1a">
+  <title>FoolSearch | April Fools Discovery Console</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <nav class="topbar">
+        <div>
+          <p class="eyebrow">April 1, 2026 Transmission</p>
+          <h1>FoolSearch</h1>
+        </div>
+        <div class="topbar-actions">
+          <span class="status-pill">Dark mode prank drive</span>
+          <button id="prank-button" class="ghost-button prank-button">Deploy Prank</button>
+        </div>
+      </nav>
+
+      <div class="hero-grid">
+        <section class="hero-copy">
+          <p class="kicker">One profile. Many formats. Mild chaos.</p>
+          <h2>The April Fools deep-space feed for videos, music, podcasts, movies, and news.</h2>
+          <p class="hero-text">
+            FoolSearch scans the cultural cosmos, pretends everything is under control, and still delivers genuinely useful recommendations.
+            It mixes user intent, mood, topics, and format preferences into a dark themed command deck with just enough mischief.
+          </p>
+
+          <div class="hero-stats">
+            <article>
+              <strong id="profile-match">0%</strong>
+              <span>Profile alignment</span>
+            </article>
+            <article>
+              <strong id="diversity-score">0</strong>
+              <span>Domains represented</span>
+            </article>
+            <article>
+              <strong id="active-signals">0</strong>
+              <span>Preference signals</span>
+            </article>
+          </div>
+        </section>
+
+        <aside class="hero-visual">
+          <div class="scene-frame" id="scene-frame">
+            <div class="scene-glow"></div>
+            <div class="scene-grid"></div>
+            <div class="scene-particles" id="scene-particles" aria-hidden="true"></div>
+            <div class="scene-core" id="scene-core">
+              <div class="core-ring ring-one"></div>
+              <div class="core-ring ring-two"></div>
+              <div class="core-ring ring-three"></div>
+              <div class="core-sphere"></div>
+              <div class="orbit-chip chip-video">Video</div>
+              <div class="orbit-chip chip-music">Music</div>
+              <div class="orbit-chip chip-podcast">Podcast</div>
+              <div class="orbit-chip chip-movie">Movie</div>
+              <div class="orbit-chip chip-news">News</div>
+            </div>
+          </div>
+          <div class="summary-card floating-card">
+            <p class="summary-label">Prank calibration</p>
+            <h3 id="mode-title">Balanced discovery</h3>
+            <p id="mode-description">
+              The engine blends explicit interests, format affinity, and recent interactions to keep the feed relevant and varied.
+            </p>
+            <div class="summary-tags" id="active-tags"></div>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <section class="panel controls-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Mission Controls</p>
+            <h3>Steer the mischief engine</h3>
+          </div>
+          <button id="reset-button" class="ghost-button">Reset profile</button>
+        </div>
+
+        <div class="control-block">
+          <label for="mood-select">Current mood</label>
+          <select id="mood-select"></select>
+        </div>
+
+        <div class="control-block">
+          <label>Interest signals</label>
+          <div class="chip-grid" id="topic-chips"></div>
+        </div>
+
+        <div class="control-block">
+          <div class="slider-headline">
+            <label for="discovery-range">Discovery vs familiarity</label>
+            <span id="discovery-value">55</span>
+          </div>
+          <input id="discovery-range" type="range" min="0" max="100" value="55">
+        </div>
+
+        <div class="control-block">
+          <label>Format affinity</label>
+          <div id="domain-sliders" class="domain-slider-list"></div>
+        </div>
+
+        <div class="control-block ai-block">
+          <div class="ai-header">
+            <label for="ai-prompt">AI recommendation brief</label>
+            <span id="ai-status" class="ai-status offline">Local fallback</span>
+          </div>
+          <textarea
+            id="ai-prompt"
+            rows="4"
+            placeholder="Example: I want a mix of practical AI startup content, one lighter unwind pick, and a quick news update."
+          ></textarea>
+          <button id="ai-button" class="primary-button">Generate AI feed</button>
+          <p id="ai-helper" class="helper-copy">
+            The AI layer reranks content across domains and writes personalized explanations.
+          </p>
+        </div>
+      </section>
+
+      <section class="panel insights-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Suspicious Logic</p>
+            <h3>April Fools mini-games</h3>
+          </div>
+        </div>
+
+        <div class="insight-grid">
+          <article class="insight-card">
+            <span>Cosmic Coin</span>
+            <strong id="coin-result">Ready</strong>
+            <p id="coin-copy">Flip the orbital coin to see whether the universe wants chaos or calm.</p>
+            <button id="flip-coin-button" class="ghost-button mini-game-button">Flip coin</button>
+          </article>
+          <article class="insight-card">
+            <span>Moon Guess</span>
+            <strong id="moon-guess-result">Pick a crater</strong>
+            <p id="moon-guess-copy">Guess which moon crater hides the prank beacon.</p>
+            <div class="mini-guess-row">
+              <button class="ghost-button mini-game-button guess-moon-button" data-guess="1">A</button>
+              <button class="ghost-button mini-game-button guess-moon-button" data-guess="2">B</button>
+              <button class="ghost-button mini-game-button guess-moon-button" data-guess="3">C</button>
+            </div>
+          </article>
+          <article class="insight-card">
+            <span>Decode Signal</span>
+            <strong id="signal-result">Signal idle</strong>
+            <p id="signal-copy">Decode the fake transmission and see what the prank satellites say.</p>
+            <button id="decode-signal-button" class="ghost-button mini-game-button">Decode</button>
+          </article>
+          <article class="insight-card">
+            <span>Astrology Pick</span>
+            <strong id="astro-result">Awaiting sign</strong>
+            <p id="astro-copy">Choose a zodiac sign and FoolSearch will pull a playful recommendation derived from live internet astrology context.</p>
+            <div class="mini-guess-row two-up">
+              <select id="astro-sign-select" class="qa-prank-input mini-select">
+                <option value="aries">Aries</option>
+                <option value="taurus">Taurus</option>
+                <option value="gemini">Gemini</option>
+                <option value="cancer">Cancer</option>
+                <option value="leo">Leo</option>
+                <option value="virgo">Virgo</option>
+                <option value="libra">Libra</option>
+                <option value="scorpio">Scorpio</option>
+                <option value="sagittarius">Sagittarius</option>
+                <option value="capricorn">Capricorn</option>
+                <option value="aquarius">Aquarius</option>
+                <option value="pisces">Pisces</option>
+              </select>
+              <button id="astro-button" class="ghost-button mini-game-button">Read stars</button>
+            </div>
+          </article>
+          <article class="insight-card">
+            <span>Astro Riddle</span>
+            <strong id="riddle-result">Loading riddle</strong>
+            <p id="riddle-copy">Fetching a real riddle from the internet for the prank station.</p>
+            <div id="riddle-question" class="riddle-question">Please wait while mission control steals a riddle from the internet.</div>
+            <div class="mini-guess-row two-up">
+              <button id="reveal-riddle-button" class="ghost-button mini-game-button">Reveal answer</button>
+              <button id="next-riddle-button" class="ghost-button mini-game-button">Next riddle</button>
+            </div>
+          </article>
+          <article class="insight-card qa-prank-card">
+            <span>Prank Oracle</span>
+            <strong id="qa-prank-title">Ask a terrible question</strong>
+            <p id="qa-prank-copy">Type a question and the oracle will return a dramatically unhelpful April Fools answer.</p>
+            <input id="qa-prank-input" class="qa-prank-input" type="text" placeholder="Will my startup reach the moon?">
+            <button id="qa-prank-button" class="ghost-button mini-game-button">Consult oracle</button>
+            <div id="qa-prank-output" class="qa-prank-output">Awaiting ridiculous inquiry...</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel research-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Signal Intercept</p>
+            <h3>Search the internet from a prank prompt</h3>
+          </div>
+          <span class="status-pill">Live linked sources</span>
+        </div>
+
+        <div class="internet-prompt-block">
+          <div class="ai-header">
+            <label for="web-search-prompt">Search brief</label>
+            <span id="web-search-status" class="ai-status offline">Ready</span>
+          </div>
+          <textarea
+            id="web-search-prompt"
+            rows="3"
+            placeholder="Example: Find the latest AI startup funding news, one strong YouTube explainer, and one design article about product taste."
+          ></textarea>
+          <button id="web-search-button" class="primary-button">Search Internet</button>
+          <p id="web-search-helper" class="helper-copy">
+            Use a natural-language prompt and PulseMix will return current web results with links.
+          </p>
+        </div>
+      </section>
+
+      <section class="panel results-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Prank-Proof Feed</p>
+            <h3>Unified recommendations from profile + prompt</h3>
+          </div>
+          <div class="legend">
+            <span><i class="dot matched"></i>Strong match</span>
+            <span><i class="dot explore"></i>Exploration pick</span>
+          </div>
+        </div>
+
+        <div id="merge-summary" class="merge-summary"></div>
+        <div id="recommendation-list" class="card-grid"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="prank-toast" class="prank-toast" aria-live="polite"></div>
+
+  <template id="card-template">
+    <article class="recommendation-card">
+      <div class="card-topline">
+        <span class="domain-badge"></span>
+        <span class="score-pill"></span>
+      </div>
+      <h4></h4>
+      <p class="meta"></p>
+      <p class="description"></p>
+      <div class="reason-list"></div>
+      <div class="card-actions">
+        <a class="open-link" target="_blank" rel="noreferrer">Open</a>
+        <button class="like-button">Like</button>
+        <button class="skip-button">Skip</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

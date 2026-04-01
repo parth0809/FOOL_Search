@@ -1,0 +1,173 @@
+FoolSearch Design Document
+==========================
+
+1. Purpose
+----------
+FoolSearch is a recommendation prototype designed to show how one interface can:
+
+- combine cross-domain discovery
+- use profile inputs and prompt inputs together
+- support live web enrichment
+- preserve explainability
+- wrap the experience in a themed visual identity
+
+The current version uses an April Fools, dark-space presentation layer while
+keeping the recommendation system useful.
+
+
+2. Design Goals
+---------------
+Primary goals:
+
+- Keep all recommendations in a single unified destination.
+- Let prompt-based internet search improve the same feed instead of creating a second feed.
+- Make the page visually distinctive, theatrical, and memorable.
+- Keep the UI responsive and usable on desktop and mobile.
+- Add humor without breaking the product flow.
+
+
+3. Information Architecture
+---------------------------
+Top-level sections:
+
+1. Hero
+   Brand, value proposition, high-level stats, and 3D visual scene.
+
+2. Mission Controls
+   User inputs for mood, interests, discovery, domain weights, and AI brief.
+
+3. Suspicious Logic
+   Compact April Fools mini-games contained within the same panel footprint.
+
+4. Signal Intercept
+   Prompt input for internet search and feed enrichment.
+
+5. Unified Recommendations
+   The single output area where all recommendations appear.
+
+
+4. Visual Design Direction
+--------------------------
+Theme:
+- dark mode by default
+- space-inspired interface
+- neon pink, cyan, violet, and gold accent system
+- glassy layered surfaces
+- orbital 3D hero animation
+
+Important visual choices:
+- Background uses gradients, starfield dots, and subtle grid overlays.
+- Panels are semi-transparent and elevated with soft blur.
+- The hero scene uses rings, floating chips, particles, and pointer-driven tilt.
+- April Fools styling is playful, but not chaotic enough to reduce legibility.
+
+
+5. Recommendation System Design
+-------------------------------
+Core principle:
+All recommendation signals should converge into one recommendation list.
+
+Signal sources:
+- selected topics
+- mood
+- discovery slider
+- domain weights
+- like/skip feedback
+- AI brief
+- prompt-based internet results
+
+Merge strategy:
+- The app loads a base catalog from the server.
+- Prompt-based web results are normalized into the same candidate shape.
+- Both sets are merged into one active catalog.
+- Ranking boosts prompt-origin items when they align with the prompt intent.
+- The merged pool is optionally reranked by the AI endpoint.
+
+Why this matters:
+- avoids split attention
+- avoids duplicated recommendation areas
+- makes prompt search feel additive rather than separate
+
+
+6. Backend Design
+-----------------
+server.js responsibilities:
+
+- serve static files
+- provide /api/catalog
+- provide /api/recommendations
+- provide /api/web-search
+
+Catalog behavior:
+- attempts live source crawling
+- caches results temporarily
+- falls back to a bundled catalog if needed
+
+AI behavior:
+- when OPENAI_API_KEY exists, uses the OpenAI Responses API
+- when unavailable, falls back to local ranking
+
+
+7. Frontend Design
+------------------
+app.js responsibilities:
+
+- initialize UI controls
+- maintain application state
+- load the live catalog
+- merge prompt-derived results into the main feed
+- render the unified recommendation cards
+- drive the hero animation
+- power April Fools mini-games
+
+Key frontend design decision:
+Prompt search is treated as feed enrichment, not as a separate search-results destination.
+
+
+8. April Fools Mini-Games
+-------------------------
+The Suspicious Logic section now contains compact mini-games:
+
+- Cosmic Coin
+- Moon Guess
+- Decode Signal
+- Escape Gravity
+- Prank Detector
+- Astro Riddle
+
+Constraints:
+- remain inside the same panel area
+- be lightweight and instant
+- avoid interfering with recommendation logic
+
+
+9. Responsive Behavior
+----------------------
+- The dashboard collapses to a single column on smaller screens.
+- The recommendation feed remains the main reading area.
+- Controls and mini-games stack vertically when space is limited.
+- Hero visual scales down for mobile.
+
+
+10. Future Improvements
+-----------------------
+Possible next steps:
+
+- make mini-games more animated
+- improve source quality for live crawling
+- add saved profiles
+- add richer explanation for why prompt-enriched items ranked highly
+- add source badges directly on recommendation cards
+- create a real toggle between prank mode and standard mode
+
+
+11. Summary
+-----------
+The current design balances three things:
+
+- a real recommendation prototype
+- a unified multi-signal ranking flow
+- an intentionally memorable April Fools presentation
+
+The most important system-level choice is that everything meaningful ends up in
+one recommendation feed.
